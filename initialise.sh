@@ -6,6 +6,9 @@ echo "I need some info to perform the deployment:"
 read -p "Database name:" DB_NAME
 read -p "Database username:" DB_USERNAME
 read -p "Database password:" DB_PASSWORD
+read -p "Application User:" APPLICATION_USER
+
+
 
 #initial dependencies
 sudo apt-get update
@@ -34,6 +37,15 @@ GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USERNAME;
 
 sudo -u postgres psql -f create.sql
 rm create.sql
+
+
+adduser $APPLICATION_USER
+usermod -aG sudo $APPLICATION_USER
+
+
+sudo apt-get install virtualenv
+
+#virtualenv -p python3 /home/pcndodger
 
 
 
