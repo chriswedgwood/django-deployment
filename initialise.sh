@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #scp -r /path/to/my/files root@0.0.0.0:/path/on/remote/droplet
-#wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/chriswedgwood/django-deployment/master/initialise.sh
+    #wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/chriswedgwood/django-deployment/master/initialise.sh
 
 echo "I need some info to perform the deployment:"
 
 read -p "Database name:" DB_NAME
 read -p "Database username:" DB_USERNAME
 read -p "Database password:" DB_PASSWORD
+read -p "Application user:" APPLICATION_USER
 
 
 echo "export LANGUAGE=en_US.UTF-8">>~/.bashrc
