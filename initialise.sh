@@ -9,7 +9,8 @@ read -p "Database username:" DB_USERNAME
 read -p "Database password:" DB_PASSWORD
 
 
-
+echo "export LANGUAGE=en_US.UTF-8">>~/.bashrc
+echo "export LC_ALL=en_US.UTF-8 ">>~/.bashrc
 
 #initial dependencies
 sudo apt-get update
@@ -47,9 +48,9 @@ usermod -aG sudo $APPLICATION_USER
 echo "RUN THESE NEXT...."
 echo "mkdir .ssh"
 echo "touch .ssh/authorized_keys"
-
 echo "chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
-echo "exit"
+
+
 
 su - $APPLICATION_USER
 
@@ -61,8 +62,6 @@ echo "su - $APPLICATION_USER"
 echo "emacs ./ssh/authorized_keys"
 echo "PASTE CONTENTS OF CLIPBOARD INTO FILE"
 echo "CTR-x CTR-s CTR-z"
-echo "exit"
-echo "exit"
 echo "TRY ssh with $APPLICATION_USER - ssh $APPLICATION_USER@ip.ad.dr.es"
 
 
