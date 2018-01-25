@@ -7,7 +7,7 @@ echo "I need some info to perform the deployment:"
 read -p "Database name:" DB_NAME
 read -p "Database username:" DB_USERNAME
 read -p "Database password:" DB_PASSWORD
-read -p "Application User:" APPLICATION_USER
+
 
 
 
@@ -44,15 +44,17 @@ rm create.sql
 adduser $APPLICATION_USER
 usermod -aG sudo $APPLICATION_USER
 
+echo "RUN THESE NEXT...."
+echo "mkdir .ssh"
+echo "touch .ssh/authorized_keys"
+
+echo "chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
+echo "exit"
+
 su - $APPLICATION_USER
 
-mkdir .ssh
-touch .ssh/authorized_keys
-
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/authorized_keys
-
 echo "#################################################################################"
+echo "run exit"
 echo "NOW RUN cat ~/.ssh/id_rsa.pub locally on your laptop"
 echo "THEN LOGIN with root - ssh root@ip.ad.dr.es"
 echo "su - $APPLICATION_USER"
@@ -61,7 +63,6 @@ echo "PASTE CONTENTS OF CLIPBOARD INTO FILE"
 echo "CTR-x CTR-s CTR-z"
 echo "exit"
 echo "exit"
-
 echo "TRY ssh with $APPLICATION_USER - ssh $APPLICATION_USER@ip.ad.dr.es"
 
 
