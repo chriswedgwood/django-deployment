@@ -10,9 +10,6 @@ read -p "Database password:" DB_PASSWORD
 read -p "Application user:" APPLICATION_USER
 
 
-echo "export LANGUAGE=en_US.UTF-8">>~/.bashrc
-echo "export LC_ALL=en_US.UTF-8 ">>~/.bashrc
-
 #initial dependencies
 sudo apt-get update
 sudo apt-get -y upgrade
