@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #scp -r /path/to/my/files root@0.0.0.0:/path/on/remote/droplet
+#wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/chriswedgwood/django-deployment/master/initialise.sh
 
 echo "I need some info to perform the deployment:"
 
@@ -15,6 +16,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install build-essential libpq-dev python-dev
 sudo apt-get -y install postgresql postgresql-contrib
+sudo apt-get install virtualenv
 
 #nginx
 sudo apt-get -y install nginx
@@ -42,8 +44,29 @@ rm create.sql
 adduser $APPLICATION_USER
 usermod -aG sudo $APPLICATION_USER
 
+su - $APPLICATION_USER
 
-sudo apt-get install virtualenv
+mkdir .ssh
+touch .ssh/authorized_keys
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+
+echo "#################################################################################"
+echo "NOW RUN cat ~/.ssh/id_rsa.pub locally on your laptop"
+echo "THEN LOGIN with root - ssh root@ip.ad.dr.es"
+echo "su - $APPLICATION_USER"
+echo "emacs ./ssh/authorized_keys"
+echo "PASTE CONTENTS OF CLIPBOARD INTO FILE"
+echo "CTR-x CTR-s CTR-z"
+echo "exit"
+echo "exit"
+
+echo "TRY ssh with $APPLICATION_USER - ssh $APPLICATION_USER@ip.ad.dr.es"
+
+
+
+
 
 #virtualenv -p python3 /home/pcndodger
 
