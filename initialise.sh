@@ -31,6 +31,13 @@ sudo systemctl start supervisor
 sudo apt-get -y install emacs
 
 
+sudo apt-get install language-pack-en
+sudo locale-gen en_GB en_GB.UTF-8
+sudo dpkg-reconfigure locales
+sudo echo -e "LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+LANGUAGE=en_US:en" >> /etc/default/locale
+
 sudo echo -e "
 CREATE DATABASE $DB_NAME;
 CREATE USER $DB_USERNAME WITH PASSWORD '$DB_PASSWORD';
