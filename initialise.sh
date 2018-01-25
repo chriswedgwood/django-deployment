@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 #scp -r /path/to/my/files root@0.0.0.0:/path/on/remote/droplet
     #wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/chriswedgwood/django-deployment/master/initialise.sh
-
+BLUE='\033[0;34m'
 echo "I need some info to perform the deployment:"
 
 read -p "Database name:" DB_NAME
 read -p "Database username:" DB_USERNAME
 read -p "Database password:" DB_PASSWORD
 read -p "Application user:" APPLICATION_USER
+read -p "Server IP:" IPADDRESS
 
 
 #initial dependencies
@@ -43,30 +44,30 @@ rm create.sql
 adduser $APPLICATION_USER
 usermod -aG sudo $APPLICATION_USER
 
-echo "RUN THESE NEXT...."
-echo "mkdir .ssh"
-echo "touch .ssh/authorized_keys"
-echo "chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
+echo -e "${BLUE}RUN THESE NEXT...."
+echo -e "${BLUE}mkdir .ssh"
+echo -e "${BLUE}touch .ssh/authorized_keys"
+echo -e "${BLUE}chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
 
 
 
 su - $APPLICATION_USER
 
-echo "#################################################################################"
-echo "run exit"
-echo "NOW RUN cat ~/.ssh/id_rsa.pub locally on your laptop"
-echo "THEN LOGIN with root - ssh root@ip.ad.dr.es"
-echo "su - $APPLICATION_USER"
-echo "emacs ./ssh/authorized_keys"
-echo "PASTE CONTENTS OF CLIPBOARD INTO FILE"
-echo "CTR-x CTR-s CTR-z"
-echo "TRY ssh with $APPLICATION_USER - ssh $APPLICATION_USER@ip.ad.dr.es"
+echo -e "${BLUE}#################################################################################"
+echo -e "${BLUE}run exit"
+echo -e "${BLUE}NOW RUN cat ~/.ssh/id_rsa.pub locally on your laptop"
+echo -e "${BLUE}THEN LOGIN with root - ssh root@$IPADDRESS"
+echo -e "${BLUE}su - $APPLICATION_USER"
+echo -e "${BLUE}emacs .ssh/authorized_keys"
+echo -e "${BLUE}PASTE CONTENTS OF CLIPBOARD INTO FILE"
+echo -e "${BLUE}CTR-x CTR-s CTR-z"
+echo -e "${BLUE}TRY ssh with $APPLICATION_USER - ssh $APPLICATION_USER@$IPADDRESS"
 
 
 
 
 
-#virtualenv -p python3 /home/pcndodger
+
 
 
 
