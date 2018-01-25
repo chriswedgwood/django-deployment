@@ -18,6 +18,9 @@ sudo apt-get -y install build-essential libpq-dev python-dev
 sudo apt-get -y install postgresql postgresql-contrib
 sudo apt-get install virtualenv
 
+
+sudo apt-get install python3 python-dev python3-dev python-pip
+
 #nginx
 sudo apt-get -y install nginx
 
@@ -48,8 +51,6 @@ echo -e "${BLUE}RUN THESE NEXT...."
 echo -e "${BLUE}mkdir .ssh"
 echo -e "${BLUE}touch .ssh/authorized_keys"
 echo -e "${BLUE}chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys"
-
-
 
 su - $APPLICATION_USER
 
