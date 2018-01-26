@@ -68,7 +68,7 @@ server {
     error_log /home/pcndodger/logs/nginx-error.log;
 
     location /static/ {
-        alias /home/pcndodger/static/;
+        alias /home/pcndodger/pcndodger/staticfiles/;
     }
 
     # checks for static file, if not found proxy to app
@@ -86,5 +86,6 @@ server {
 " > /etc/nginx/sites-available/pcndodger
 
 sudo ln -s /etc/nginx/sites-available/pcndodger /etc/nginx/sites-enabled/pcndodger
+sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx restart
 
