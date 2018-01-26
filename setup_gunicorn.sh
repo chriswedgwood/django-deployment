@@ -68,7 +68,7 @@ server {
     error_log /home/pcndodger/logs/nginx-error.log;
 
     location /static/ {
-        alias /home/pcndodger/pcndodger/staticfiles/;
+        alias /home/pcndodger/staticfiles/;
     }
 
     # checks for static file, if not found proxy to app
