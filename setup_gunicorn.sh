@@ -21,10 +21,12 @@ export DJANGO_SETTINGS_MODULE=\$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=\$DIR:\$PYTHONPATH
 
 exec ../bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
-  --name \$NAME \
-  --workers \$WORKERS \
-  --user=\$USER \
-  --group=\$GROUP \
-  --bind=\$BIND \
-  --log-level=\$LOG_LEVEL \
-  --log-file=-" > /home/pcndodger/bin/gunicorn_start
+  --name \$NAME \\
+  --workers \$WORKERS \\
+  --user=\$USER \\
+  --group=\$GROUP \\
+  --bind=\$BIND \\
+  --log-level=\$LOG_LEVEL \\
+  --log-file=-" > xxx.sh
+
+  #> /home/pcndodger/bin/gunicorn_start
