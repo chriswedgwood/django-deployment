@@ -27,6 +27,4 @@ exec ../bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
   --group=\$GROUP \\
   --bind=\$BIND \\
   --log-level=\$LOG_LEVEL \\
-  --log-file=-" > xxx.sh
-
-  #> /home/pcndodger/bin/gunicorn_start
+  --log-file=-"  > /home/pcndodger/bin/gunicorn_start
