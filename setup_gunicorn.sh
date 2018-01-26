@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/chriswedgwood/django-deployment/master/setup_gunicorn.sh
 echo -e "
 
 #!/bin/bash
