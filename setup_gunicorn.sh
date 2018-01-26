@@ -28,3 +28,25 @@ exec ../bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
   --bind=\$BIND \\
   --log-level=\$LOG_LEVEL \\
   --log-file=-"  > /home/pcndodger/bin/gunicorn_start
+
+
+chmod u+x bin/gunicorn_start
+
+mkdir run
+
+
+mkdir logs
+
+touch logs/gunicorn-error.log
+
+echo -e "
+[program:pcndodger]
+command=/home/pcndodger/bin/gunicorn_start
+user=pcndodger
+autostart=true
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/home/pcndodger/logs/gunicorn-error.log " > /etc/supervisor/conf.d/pcndodger.conf
+
+sudo supervisorctl reread
+sudo supervisorctl update
