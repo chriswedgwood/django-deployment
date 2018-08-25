@@ -53,8 +53,7 @@ source  /home/$APPLICATION/.env
 ./2_setup_ubuntu_dependencies.sh
 
 
-./setup_database.sh
-
+./setup_database.sh $DB_NAME $DB_USER $DB_PASSWORD
 
 echo -e "${CYAN}####MOVING TO USER $APPLICATION####${NC}"
 echo -e "${CYAN}####RUN /root/django-deployment/digitalocean/4_ssh_git_setp.sh NEXT ####${NC}"
