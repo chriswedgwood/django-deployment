@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+pwd
 
 echo -e "${CYAN}####DATABASE SETUP STARTING####${NC}"
 
