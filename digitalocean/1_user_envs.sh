@@ -53,5 +53,11 @@ export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" 
 echo -e "${CYAN}####MOVING TO USER $APPLICATION####${NC}"
 echo -e "${CYAN}####RUN /root/django-deployment/digitalocean/4_ssh_git_setp.sh NEXT ####${NC}"
 
+
+cp ./4_ssh_git_setup.sh /home/$APPLICATION/4_ssh_git_setup.sh
+
+cd /home/$APPLICATION/
+
 sudo su $APPLICATION
+
 
