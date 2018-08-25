@@ -55,6 +55,7 @@ echo -e "${CYAN}####RUN /root/django-deployment/digitalocean/4_ssh_git_setp.sh N
 
 
 cp ./4_ssh_git_setup.sh /home/$APPLICATION/4_ssh_git_setup.sh
+cp ./3_setup_all.sh /home/$APPLICATION/3_setup_all.sh
 
 cd /home/$APPLICATION/
 
