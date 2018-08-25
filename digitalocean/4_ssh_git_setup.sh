@@ -12,4 +12,4 @@ echo -e "${CYAN}####adding id_rsa to agent####${NC}"
 
 ssh-add ~/.ssh/id_rsa
 echo -e "${CYAN}####COPY THIS KEY TO GITHUB####${NC}"
-cat cat /home/$APPLICATION/.ssh/id_rsa
+cat cat /home/$APPLICATION/.ssh/id_rsa.pub
