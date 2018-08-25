@@ -3,18 +3,20 @@
 
 
 read -p "Application User:" APPLICATION
-read -p "Droplet IP:" IPADDRESS
+read -p "Droplet IP Address:" IPADDRESS
 read -p "Database Name:" DB_NAME
 read -p "Database user:" DB_USER
-read -p "Database Password:" DB_PASSWORD
+read -s "Database Password:" DB_PASSWORD
 read -p "Domain:" DOMAIN
 
 
+CYAN='\033[0;36m'
 
-BLUE='\033[0;34m'
+echo -e "${CYAN}####CREATING USER $APPLICATION####${NC}"
 
 adduser $APPLICATION
 gpasswd -a $APPLICATION sudo
+usermod -aG sudo $APPLICATION
 
 mkdir -p /home/$APPLICATION/.ssh
 touch /home/$APPLICATION/.ssh/authorized_keys
@@ -44,3 +46,4 @@ export APPLICATION='$APPLICATION'
 export DB_NAME='$DB_NAME'
 export DB_USER='$DB_USER'
 export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" > /home/$APPLICATION/.env
+
