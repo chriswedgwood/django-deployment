@@ -5,6 +5,8 @@ echo -e "${CYAN}####DATABASE SETUP STARTING####${NC}"
 
 pwd
 
+sudo echo -e "xxx" > xxx.sql
+
 sudo echo -e "
 CREATE DATABASE $DB_NAME;
 CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';
