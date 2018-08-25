@@ -48,9 +48,10 @@ export DB_USER='$DB_USER'
 export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" > /home/$APPLICATION/.env
 
 
-
+source  /home/$APPLICATION/.env
 
 ./2_setup_ubuntu_dependencies.sh
+
 
 ./setup_database.sh
 

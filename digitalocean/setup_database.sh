@@ -15,5 +15,5 @@ GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;
 " > create.sql
 
 sudo -u postgres psql -f create.sql
-rm create.sql
+#rm create.sql
 echo -e "${CYAN}####DATABASE SETUP OVER####${NC}"
