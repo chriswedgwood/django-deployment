@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-pwd
+
 
 echo -e "${CYAN}####DATABASE SETUP STARTING####${NC}"
+
+pwd
 
 sudo echo -e "
 CREATE DATABASE $DB_NAME;
