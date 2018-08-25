@@ -4,14 +4,14 @@
 
 read -p "Application User:" APPLICATION
 read -p "Droplet IP Address:" IPADDRESS
+read -p "Site Domain:" DOMAIN
 read -p "Database Name:" DB_NAME
 read -p "Database user:" DB_USER
 read -s -p "Database Password:" DB_PASSWORD
-read -p "Domain:" DOMAIN
 
 
 CYAN='\033[0;36m'
-
+NC='\033[0m' # No Color
 echo -e "${CYAN}####CREATING USER $APPLICATION####${NC}"
 
 adduser $APPLICATION
