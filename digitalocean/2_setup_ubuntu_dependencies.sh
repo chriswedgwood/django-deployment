@@ -44,7 +44,7 @@ wget https://bootstrap.pypa.io/get-pip.py
 sudo -H python3.6 get-pip.py
 sudo -H pip3.6 install virtualenv
 
-sudo su $APPLICATION
+
 
 
 
