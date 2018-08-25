@@ -27,6 +27,23 @@ chown $APPLICATION:$APPLICATION /etc/supervisor/conf.d
 chown $APPLICATION:$APPLICATION /etc/nginx/sites-available/
 
 
+echo -e "${CYAN}####DATABASE SETUP STARTING####${NC}"
+
+sudo echo -e "
+CREATE DATABASE $DB_NAME;
+CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';
+ALTER ROLE $DB_USER SET client_encoding TO 'utf8';
+ALTER ROLE $DB_USER SET default_transaction_isolation TO 'read committed';
+ALTER ROLE $DB_USER SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;
+" > create.sql
+
+sudo -u postgres psql -f create.sql
+rm create.sql
+
+echo -e "${CYAN}####DATABASE SETUP OVER####${NC}"
+
+
 SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]))')
 
 
@@ -48,21 +65,6 @@ export DB_USER='$DB_USER'
 export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" > /home/$APPLICATION/.env
 
 
-echo -e "${CYAN}####DATABASE SETUP STARTING####${NC}"
-
-sudo echo -e "
-CREATE DATABASE $DB_NAME;
-CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';
-ALTER ROLE $DB_USER SET client_encoding TO 'utf8';
-ALTER ROLE $DB_USER SET default_transaction_isolation TO 'read committed';
-ALTER ROLE $DB_USER SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;
-" > create.sql
-
-sudo -u postgres psql -f create.sql
-rm create.sql
-
-echo -e "${CYAN}####DATABASE SETUP OVER####${NC}"
 
 
 ./2_setup_ubuntu_dependencies.sh
