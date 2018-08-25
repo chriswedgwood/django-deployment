@@ -6,7 +6,7 @@ read -p "Application User:" APPLICATION
 read -p "Droplet IP Address:" IPADDRESS
 read -p "Database Name:" DB_NAME
 read -p "Database user:" DB_USER
-read -s "Database Password:" DB_PASSWORD
+read -s -p "Database Password:" DB_PASSWORD
 read -p "Domain:" DOMAIN
 
 
