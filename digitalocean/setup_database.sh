@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-DB_NAME = $1
-DB_USER = $2
-DB_PASSWORD =$3
+DB_NAME=$1
+DB_USER=$2
+DB_PASSWORD=$3
 
 echo -e "${CYAN}####DATABASE SETUP STARTING####${NC}"
 
 pwd
-
 
 
 sudo echo -e "
