@@ -60,9 +60,9 @@ echo -e "${CYAN}####MOVING TO USER $APPLICATION####${NC}"
 echo -e "${CYAN}####RUN /root/django-deployment/digitalocean/4_ssh_git_setp.sh NEXT ####${NC}"
 
 
-cp ./4_ssh_git_setup.sh /home/$APPLICATION/4_ssh_git_setup.sh
-cp ./3_setup_all.sh /home/$APPLICATION/3_setup_all.sh
-cp ./setup_database.sh /home/$APPLICATION/setup_database.sh
+cp 4_ssh_git_setup.sh /home/$APPLICATION/4_ssh_git_setup.sh
+cp 3_setup_all.sh /home/$APPLICATION/3_setup_all.sh
+cp setup_database.sh /home/$APPLICATION/setup_database.sh
 
 cd /home/$APPLICATION/
 
