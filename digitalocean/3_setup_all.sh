@@ -13,9 +13,7 @@ echo "APPLICATION:"$APPLICATION
 
 TODAY=`date '+%Y%m%d%H%M%S'`;
 
-
-
-
+./setup_database.sh $DB_NAME $DB_USER $DB_PASSWORD
 
 echo -e "${CYAN}####CREATING APPLICATION $APPLICATION$TODAY ####${NC}"
 
