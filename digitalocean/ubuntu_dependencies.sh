@@ -24,20 +24,23 @@ sudo apt-get install python3.6
 sudo apt-get install python3-dev
 sudo apt-get install unixodbc-dev
 
-echo -e "${CYAN}####INSTALLING POSTGRES ####${NC}"
+echo -e "${CYAN}#### INSTALLING POSTGRES ####${NC}"
 
 #Postgres
 sudo apt-get -y install postgresql postgresql-contrib
+
+echo -e "${CYAN}#### INSTALLING NGINX ####${NC}"
+
 sudo apt-get -y install nginx
 
-echo -e "${CYAN}####INSTALLING SUPERVISOR ####${NC}"
+echo -e "${CYAN}#### INSTALLING SUPERVISOR ####${NC}"
 
 #Supervisor
 sudo apt-get -y install supervisor
 sudo systemctl enable supervisor
 sudo systemctl start supervisor
 
-echo -e "${CYAN}####INSTALLING VIRTUALENV ####${NC}"
+echo -e "${CYAN}#### INSTALLING VIRTUALENV ####${NC}"
 
 #Virualenv
 wget https://bootstrap.pypa.io/get-pip.py
