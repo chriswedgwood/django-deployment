@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 CYAN='\033[0;36m'
+NC='\033[0m' # No Color
 
 echo -e "${CYAN}####STARTING SETUP####${NC}"
 
@@ -13,7 +14,7 @@ echo "APPLICATION:"$APPLICATION
 
 TODAY=`date '+%Y%m%d%H%M%S'`;
 
-./setup_database.sh $DB_NAME $DB_USER $DB_PASSWORD
+database.sh $DB_NAME $DB_USER $DB_PASSWORD
 
 echo -e "${CYAN}####CREATING APPLICATION $APPLICATION$TODAY ####${NC}"
 
@@ -145,7 +146,10 @@ server {
 
 
 sudo ln -s /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APPLICATION
-sudo rm /etc/nginx/sites-enabled/default
+
 
 sudo service nginx restart
+
+mv django-deployment /home/$APPLICATION
+chown -R pcndodger:pcndodger /home/$APPLICATION/django-deployment
 

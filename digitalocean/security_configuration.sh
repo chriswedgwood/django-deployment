@@ -51,9 +51,7 @@ export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" 
 
 source  /home/$APPLICATION/.env
 
-./2_setup_ubuntu_dependencies.sh
-
-
+./ubuntu_dependencies.sh
 
 
 echo -e "${CYAN}####MOVING TO USER $APPLICATION####${NC}"
