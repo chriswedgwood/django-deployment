@@ -14,13 +14,13 @@ echo "APPLICATION:"$APPLICATION
 
 TODAY=`date '+%Y%m%d%H%M%S'`;
 
-database.sh $DB_NAME $DB_USER $DB_PASSWORD
+./database.sh $DB_NAME $DB_USER $DB_PASSWORD
 
 echo -e "${CYAN}####CREATING APPLICATION $APPLICATION$TODAY ####${NC}"
 
-mkdir $APPLICATION$TODAY
+mkdir ~/$APPLICATION$TODAY
 
-cd $APPLICATION$TODAY
+cd ~/$APPLICATION$TODAY
 
 echo -e "${CYAN}####CLONING git@github.com:chriswedgwood/$APPLICATION.git ####${NC}"
 
@@ -103,9 +103,7 @@ stdout_logfile=/home/$USER/$APPLICATION$TODAY/logs/gunicorn-error.log" > /etc/su
 
 sudo supervisorctl reread
 sudo supervisorctl update
-
 sudo supervisorctl status $APPLICATION
-
 sudo supervisorctl restart $APPLICATION
 
 echo -e "${CYAN}####SETUP NGINX####${NC}"
