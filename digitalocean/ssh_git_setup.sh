@@ -3,7 +3,7 @@
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-source .env
+source ~/.env
 echo -e "${CYAN}####SETUP SSH FOR GITHUB CLONES####${NC}"
 ssh-keygen -t rsa -b 4096 -C "wedgemail@gmail.com"
 echo -e "${CYAN}####CHECK ssh-agent IS UP####${NC}"

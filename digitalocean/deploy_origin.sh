@@ -148,6 +148,4 @@ sudo ln -s /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APP
 
 sudo service nginx restart
 
-mv django-deployment /home/$APPLICATION
-chown -R pcndodger:pcndodger /home/$APPLICATION/django-deployment
 
