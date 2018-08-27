@@ -143,6 +143,11 @@ server {
 }" > /etc/nginx/sites-available/$APPLICATION
 
 
+if [[ -L "/etc/nginx/sites-available/$APPLICATION" && -d "/etc/nginx/sites-available/$APPLICATION" ]]
+then
+    echo "/etc/nginx/sites-available/$APPLICATION is a symlink to a directory"
+fi
+
 sudo ln -s /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APPLICATION
 
 
