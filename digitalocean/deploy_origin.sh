@@ -5,7 +5,7 @@ NC='\033[0m' # No Color
 
 echo -e "${CYAN}####STARTING SETUP####${NC}"
 
-source .env
+source ~/.env
 
 USER=$(whoami)
 
