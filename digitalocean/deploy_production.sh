@@ -6,22 +6,16 @@ NC='\033[0m' # No Color
 echo -e "${CYAN}####STARTING SETUP####${NC}"
 
 source ~/.env
-
 USER=$(whoami)
-
 echo "USER NAME:"$USER
 echo "APPLICATION:"$APPLICATION
 
 TODAY=`date '+%Y%m%d%H%M%S'`;
-
 echo -e "${CYAN}####CREATING APPLICATION $APPLICATION$TODAY ####${NC}"
-
 mkdir ~/$APPLICATION$TODAY
-
 cd ~/$APPLICATION$TODAY
 
 echo -e "${CYAN}####CLONING git@github.com:chriswedgwood/$APPLICATION.git ####${NC}"
-
 git clone git@github.com:chriswedgwood/$APPLICATION.git
 
 echo -e "${CYAN}####CREATING VIRTUALENV venv$TODAY ####${NC}"
@@ -81,12 +75,9 @@ exec ../venv$TODAY/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
 
 
 chmod u+x ../gunicorn_start
-
 echo -e "${CYAN}####SETUP LOG FOLDERS AND FILES####${NC}"
-
 mkdir ../run
 mkdir ../logs
-
 touch ../logs/gunicorn-error.log
 
 echo -e "${CYAN}####SETUP SUPERVISORD####${NC}"
@@ -141,9 +132,7 @@ server {
 }" > /etc/nginx/sites-available/$APPLICATION
 
 
-sudo ln -s /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APPLICATION
-
-
+sudo ln -sf /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APPLICATION
 sudo service nginx restart
 
 
