@@ -55,7 +55,7 @@ WORKERS=3
 BIND=unix:/home/$USER/$APPLICATION$TODAY/run/gunicorn.sock
 DJANGO_SETTINGS_MODULE=config.settings.production
 DJANGO_WSGI_MODULE=config.wsgi
-LOG_LEVEL=error
+LOG_LEVEL=debug
 
 cd \$DIR
 source ../venv$TODAY/bin/activate
@@ -88,7 +88,7 @@ user=$USER
 autostart=true
 autorestart=true
 redirect_stderr=true
-stdout_logfile=/home/$USER/$APPLICATION$TODAY/logs/gunicorn-error.log" > /etc/supervisor/conf.d/$APPLICATION.conf
+stdout_logfile=/home/$USER/logs/gunicorn-error.log" > /etc/supervisor/conf.d/$APPLICATION.conf
 
 sudo supervisorctl reread
 sudo supervisorctl update
@@ -111,8 +111,8 @@ server {
     keepalive_timeout 5;
     client_max_body_size 4G;
 
-    access_log /home/$USER/$APPLICATION$TODAY/logs/nginx-access.log;
-    error_log /home/$USER/$APPLICATION$TODAY/logs/nginx-error.log;
+    access_log /home/$USER/logs/nginx-access.log;
+    error_log /home/$USER/logs/nginx-error.log;
 
     location /static/ {
         alias /home/$USER/$APPLICATION$TODAY/$APPLICATION/staticfiles/;

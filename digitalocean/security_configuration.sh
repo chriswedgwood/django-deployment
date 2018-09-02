@@ -4,7 +4,9 @@
 
 read -p "Application User:" APPLICATION
 read -p "Droplet IP Address:" IPADDRESS
-read -p "Site Domain:" DOMAIN
+read -p "Site Domain(no www):" DOMAIN
+read -p "Mailgun Domain:" MAILGUN_DOMAIN
+
 read -p "Database Name:" DB_NAME
 read -p "Database user:" DB_USER
 read -s -p "Database Password:" DB_PASSWORD
@@ -35,7 +37,7 @@ export DJANGO_SECRET_KEY='$SECRET_KEY'
 export DJANGO_ALLOWED_HOSTS='$IPADDRESS'
 export DJANGO_ADMIN_URL='padmin'
 export DJANGO_MAILGUN_API_KEY='key-e127c2a80065055cc6c99a7eaa636b88'
-export MAILGUN_SENDER_DOMAIN='$DOMAIN'
+export MAILGUN_SENDER_DOMAIN='$MAILGUN_DOMAIN'
 export DJANGO_AWS_ACCESS_KEY_ID=''
 export DJANGO_AWS_SECRET_ACCESS_KEY=''
 export DJANGO_AWS_STORAGE_BUCKET_NAME=''
@@ -46,6 +48,7 @@ export APPLICATION='$APPLICATION'
 export DB_NAME='$DB_NAME'
 export DB_USER='$DB_USER'
 export DB_PASSWORD='$DB_PASSWORD'
+export SITE_DOMAIN='$DOMAIN'
 export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" > /home/$APPLICATION/.env
 
 
