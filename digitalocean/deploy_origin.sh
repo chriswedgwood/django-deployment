@@ -26,13 +26,13 @@ echo -e "${CYAN}####CLONING git@github.com:chriswedgwood/$APPLICATION.git ####${
 
 git clone git@github.com:chriswedgwood/$APPLICATION.git
 
-echo -e "${CYAN}####CREATING VIRTUALENV venv$TODAY ####${NC}"
+echo -e "${CYAN}####CREATING VIRTUALENV venv ####${NC}"
 
-virtualenv venv$TODAY -p python3.6
+virtualenv venv -p python3.6
 
-echo -e "${CYAN}####ACTIVATING VIRTUALENV venv$TODAY ####${NC}"
+echo -e "${CYAN}####ACTIVATING VIRTUALENV venv ####${NC}"
 
-source venv$TODAY/bin/activate
+source venv/bin/activate
 
 pwd
 echo -e "${CYAN}####INSTALL REQUIREMENTS####${NC}"
@@ -66,13 +66,13 @@ DJANGO_WSGI_MODULE=config.wsgi
 LOG_LEVEL=error
 
 cd \$DIR
-source ../venv$TODAY/bin/activate
+source ../venv/bin/activate
 source /home/$APPLICATION/.env
 
 export DJANGO_SETTINGS_MODULE=\$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=\$DIR:\$PYTHONPATH
 
-exec ../venv$TODAY/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
+exec ../venv/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
   --name \$NAME \\
   --workers \$WORKERS \\
   --user=\$USER \\

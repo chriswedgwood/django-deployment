@@ -1,27 +1,17 @@
-## Bash Script for Set Up Django with Postgres, Nginx and Gunicorn on DigitalOcean  
+1) scp -r ./digitalocean root@178.62.31.29:/root
+2) ssh root@<ipaddress>
+3) ./digitalocean/
+4) ./digitalocean/security_configuration.sh
+5) 
 
-### (Bonus: Automatic Deployment with Git)  
+1) ssh -t root@<ip address> "$(cat 1_ubuntu_dependencies.sh)"
+2) ssh -t root@<ip address> "$(cat 2_security_configuration.sh)"
+3) ssh -t <application name>@<ip address> "$(cat 3_ssh_git_setup.sh)" 
 
-## Usage  
+testing 
 
-### 1. Initial Server Set Up  
+ssh -T git@github.com
 
-$ `ssh root@your_server_ip`  
+pbcopy < ~/.ssh/id_rsa.pub
 
-\# `adduser sammy`  
-\# `usermod -aG sudo sammy`  
-
-$ `ssh-copy-id sammy@your_server_ip`  
-$ `ssh sammy@your_server_ip`  
-
-### 2. Downloading and Starting Script  
-
-```
- wget --no-check-certificate --content-disposition  https://raw.githubusercontent.com/turkerdotpy/django-setup-digitalocean/master/setup.sh && bash setup.sh
-```  
-
-> And follow instructions.  
-
-### 3. Minor Edits  
-
-> Do not forget to change the settings.py content. (Ex: ALLOWED_HOSTS, DATABASES)  
+ssh git should not be run under sudo!!

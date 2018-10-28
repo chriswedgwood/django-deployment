@@ -21,7 +21,7 @@ echo -e "${CYAN}####INSTALLING PYTHON ####${NC}"
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get install python3.6
-sudo apt-get install python3-dev
+sudo apt-get install python3.6-dev
 sudo apt-get install unixodbc-dev
 
 echo -e "${CYAN}#### INSTALLING POSTGRES ####${NC}"
@@ -48,6 +48,8 @@ sudo -H python3.6 get-pip.py
 sudo -H pip3.6 install virtualenv
 
 
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
+sud apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev     xz-utils tk-dev python3.6 python3.6-venv python3.6-dev
 
 
 
