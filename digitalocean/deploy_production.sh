@@ -14,15 +14,15 @@ TODAY=`date '+%Y%m%d%H%M%S'`;
 echo -e "${CYAN}####CREATING APPLICATION $APPLICATION$TODAY ####${NC}"
 mkdir ~/$APPLICATION$TODAY
 cd ~/$APPLICATION$TODAY
-
+mkdir ~/logs
 echo -e "${CYAN}####CLONING git@github.com:chriswedgwood/$APPLICATION.git ####${NC}"
 git clone git@github.com:chriswedgwood/$APPLICATION.git
 
-echo -e "${CYAN}####CREATING VIRTUALENV venv$TODAY ####${NC}"
+echo -e "${CYAN}####CREATING VIRTUALENV venv ####${NC}"
 
-virtualenv venv$TODAY -p python3.6
+virtualenv venv -p python3.6
 
-echo -e "${CYAN}####ACTIVATING VIRTUALENV venv$TODAY ####${NC}"
+echo -e "${CYAN}####ACTIVATING VIRTUALENV venv ####${NC}"
 
 source venv$TODAY/bin/activate
 

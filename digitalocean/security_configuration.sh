@@ -24,10 +24,11 @@ mkdir -p /home/$APPLICATION/.ssh
 touch /home/$APPLICATION/.ssh/authorized_keys
 
 cp /root/.ssh/authorized_keys /home/$APPLICATION/.ssh/authorized_keys
-chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/.ssh
-chown -R $APPLICATION:$APPLICATION /etc/supervisor/conf.d
-chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
-
+cp -r /root/digitalocean/ /home/$APPLICATION/
+#chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/.ssh
+#chown -R $APPLICATION:$APPLICATION /etc/supervisor/
+#chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
+#chown -R $APPLICATION:$APPLICATION /digitalocean/
 
 SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]))')
 
@@ -37,7 +38,7 @@ export DJANGO_SECRET_KEY='$SECRET_KEY'
 export DJANGO_ALLOWED_HOSTS='$IPADDRESS'
 export DJANGO_ADMIN_URL='padmin'
 export MAILGUN_API_KEY='key-e127c2a80065055cc6c99a7eaa636b88'
-export MAILGUN_SENDER_DOMAIN='$MAILGUN_DOMAIN'
+export MAILGUN_DOMAIN='$MAILGUN_DOMAIN'
 export DJANGO_AWS_ACCESS_KEY_ID=''
 export DJANGO_AWS_SECRET_ACCESS_KEY=''
 export DJANGO_AWS_STORAGE_BUCKET_NAME=''

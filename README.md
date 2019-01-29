@@ -1,6 +1,6 @@
-1) scp -r ./digitalocean root@178.62.31.29:/root
-2) ssh root@<ipaddress>
-3) ./digitalocean/
+1) scp -r ./digitalocean root@142.93.195.206:/root
+2) ssh root@46.101.94.165
+3) ./digitalocean/ubuntu_dependencies
 4) ./digitalocean/security_configuration.sh
 5) 
 
