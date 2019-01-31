@@ -24,7 +24,7 @@ virtualenv venv -p python3.6
 
 echo -e "${CYAN}####ACTIVATING VIRTUALENV venv ####${NC}"
 
-source venv$TODAY/bin/activate
+source venv/bin/activate
 
 pwd
 echo -e "${CYAN}####INSTALL REQUIREMENTS####${NC}"
@@ -58,13 +58,13 @@ DJANGO_WSGI_MODULE=config.wsgi
 LOG_LEVEL=debug
 
 cd \$DIR
-source ../venv$TODAY/bin/activate
+source ../venv/bin/activate
 source /home/$APPLICATION/.env
 
 export DJANGO_SETTINGS_MODULE=\$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=\$DIR:\$PYTHONPATH
 
-exec ../venv$TODAY/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
+exec ../venv/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
   --name \$NAME \\
   --workers \$WORKERS \\
   --user=\$USER \\

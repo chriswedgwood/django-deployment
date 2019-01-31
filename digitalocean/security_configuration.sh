@@ -25,10 +25,10 @@ touch /home/$APPLICATION/.ssh/authorized_keys
 
 cp /root/.ssh/authorized_keys /home/$APPLICATION/.ssh/authorized_keys
 cp -r /root/digitalocean/ /home/$APPLICATION/
-#chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/.ssh
-#chown -R $APPLICATION:$APPLICATION /etc/supervisor/
-#chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
-#chown -R $APPLICATION:$APPLICATION /digitalocean/
+chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/.ssh
+chown -R $APPLICATION:$APPLICATION /etc/supervisor/
+chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
+chown -R $APPLICATION:$APPLICATION /digitalocean/
 
 SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]))')
 
@@ -42,7 +42,7 @@ export MAILGUN_DOMAIN='$MAILGUN_DOMAIN'
 export DJANGO_AWS_ACCESS_KEY_ID=''
 export DJANGO_AWS_SECRET_ACCESS_KEY=''
 export DJANGO_AWS_STORAGE_BUCKET_NAME=''
-export SENTRY_DSN=''
+export DJANGO_SENTRY_DSN=''
 export DJANGO_DEBUG=False
 export IP_ADDRESS='$IPADDRESS'
 export APPLICATION='$APPLICATION'
@@ -52,18 +52,11 @@ export DB_PASSWORD='$DB_PASSWORD'
 export SITE_DOMAIN='$DOMAIN'
 export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" > /home/$APPLICATION/.env
 
-
 source  /home/$APPLICATION/.env
-
-
 
 echo -e "${CYAN}####MOVING TO USER $APPLICATION####${NC}"
 echo -e "${CYAN}####RUN /root/django-deployment/digitalocean/4_ssh_git_setp.sh NEXT ####${NC}"
 
-
-#cp 4_ssh_git_setup.sh /home/$APPLICATION/4_ssh_git_setup.sh
-#cp 3_setup_all.sh /home/$APPLICATION/3_setup_all.sh
-#cp setup_database.sh /home/$APPLICATION/setup_database.sh
 
 cd /home/$APPLICATION/
 

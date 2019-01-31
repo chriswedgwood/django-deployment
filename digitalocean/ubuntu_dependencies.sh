@@ -49,8 +49,9 @@ sudo -H pip3.6 install virtualenv
 
 
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
-sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev     xz-utils tk-dev python3.6 python3.6-venv python3.6-dev
-
+sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev python3.6 python3.6-venv python3.6-dev
+sudo apt-get install postgresql-server-dev-9.5
+sudo apt-get install python-psycopg2
 
 
 

@@ -12,3 +12,4 @@ eval $(ssh-agent -s)
 ssh-add /home/$APPLICATION/.ssh/id_rsa
 echo -e "${CYAN}####COPY THIS KEY TO GITHUB####${NC}"
 cat /home/$APPLICATION/.ssh/id_rsa.pub
+ssh -T git@github.com
