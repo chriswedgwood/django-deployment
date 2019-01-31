@@ -26,21 +26,26 @@ echo -e "${CYAN}####ACTIVATING VIRTUALENV venv ####${NC}"
 
 source venv/bin/activate
 
+
 pwd
 echo -e "${CYAN}####INSTALL REQUIREMENTS####${NC}"
 
 pip install -r $APPLICATION/requirements/production.txt
 
+echo -e "${CYAN}####INSTALL NODE MODULES####${NC}"
+cd $APPLICATION/frontend
+
+npm install
+
 
 cd $APPLICATION
-
 echo -e "${CYAN}####RUN MIGRATIONS####${NC}"
 
 
-python manage.py migrate
+python manage.py migrate --settings config.settings.production
 echo -e "${CYAN}####COLLECT STATIC FILES####${NC}"
 
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput --settings config.settings.production
 #python manage.py createsuperuser
 
 echo -e "${CYAN}####SETUP GUNICORN####${NC}"

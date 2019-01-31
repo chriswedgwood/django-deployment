@@ -53,6 +53,8 @@ sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm libncurses
 sudo apt-get install postgresql-server-dev-9.5
 sudo apt-get install python-psycopg2
 
+sudo apt-get install nodejs
+sudo apt-get install npm
 
 
 
