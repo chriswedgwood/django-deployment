@@ -11,5 +11,5 @@ systemctl status nginx.service
 journalctl -xe
 cat /var/log/nginx/access.log
 cat  /var/log/nginx/error.log
-cat 
+ 
  
