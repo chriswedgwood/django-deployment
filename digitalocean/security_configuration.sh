@@ -30,6 +30,7 @@ chown -R $APPLICATION:$APPLICATION /etc/supervisor/
 chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
 chown -R $APPLICATION:$APPLICATION /digitalocean/
 
+
 SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]))')
 
 
@@ -55,7 +56,7 @@ export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" 
 source  /home/$APPLICATION/.env
 
 echo -e "${CYAN}####MOVING TO USER $APPLICATION####${NC}"
-echo -e "${CYAN}####RUN /root/django-deployment/digitalocean/4_ssh_git_setp.sh NEXT ####${NC}"
+
 
 
 cd /home/$APPLICATION/

@@ -5,6 +5,7 @@ NC='\033[0m' # No Color
 
 echo -e "${CYAN}####STARTING SETUP####${NC}"
 
+
 source ~/.env
 USER=$(whoami)
 echo "USER NAME:"$USER
@@ -35,10 +36,11 @@ pip install -r $APPLICATION/requirements/production.txt
 echo -e "${CYAN}####INSTALL NODE MODULES####${NC}"
 cd $APPLICATION/frontend
 
-npm install
+npm install --production
 
 
-cd $APPLICATION
+cd /home/$APPLICATION/$APPLICATION$TODAY/$APPLICATION/
+pwd
 echo -e "${CYAN}####RUN MIGRATIONS####${NC}"
 
 
@@ -76,7 +78,7 @@ exec ../venv/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
   --group=\$GROUP \\
   --bind=\$BIND \\
   --log-level=\$LOG_LEVEL \\
-  --log-file=-"  > /home/$USER/$APPLICATION$TODAY/gunicorn_start
+  --log-file=-"  > /home/$APPLICATION/$APPLICATION$TODAY/gunicorn_start
 
 
 chmod u+x ../gunicorn_start
@@ -88,12 +90,15 @@ touch ../logs/gunicorn-error.log
 echo -e "${CYAN}####SETUP SUPERVISORD####${NC}"
 
 echo -e "[program:$APPLICATION]
-command=/home/$USER/$APPLICATION$TODAY/gunicorn_start
+command=/home/$APPLICATION/$APPLICATION$TODAY/gunicorn_start
 user=$USER
 autostart=true
 autorestart=true
 redirect_stderr=true
 stdout_logfile=/home/$USER/logs/gunicorn-error.log" > /etc/supervisor/conf.d/$APPLICATION.conf
+
+sudo chown -R $APPLICATION:$APPLICATION /etc/supervisor/
+
 
 sudo supervisorctl reread
 sudo supervisorctl update
@@ -103,7 +108,7 @@ sudo supervisorctl restart $APPLICATION
 echo -e "${CYAN}####SETUP NGINX####${NC}"
 
 echo -e "upstream app_server {
-    server unix:/home/$USER/$APPLICATION$TODAY/run/gunicorn.sock fail_timeout=0;
+    server unix:/home/$APPLICATION/$APPLICATION$TODAY/run/gunicorn.sock fail_timeout=0;
 }
 
 server {
@@ -116,11 +121,11 @@ server {
     keepalive_timeout 5;
     client_max_body_size 4G;
 
-    access_log /home/$USER/logs/nginx-access.log;
-    error_log /home/$USER/logs/nginx-error.log;
+    access_log /home/$APPLICATION/logs/nginx-access.log;
+    error_log /home/$APPLICATION/logs/nginx-error.log;
 
     location /static/ {
-        alias /home/$USER/$APPLICATION$TODAY/$APPLICATION/staticfiles/;
+        alias /home/$APPLICATION/$APPLICATION$TODAY/$APPLICATION/staticfiles/;
     }
 
     # checks for static file, if not found proxy to app
@@ -136,8 +141,13 @@ server {
     }
 }" > /etc/nginx/sites-available/$APPLICATION
 
+sudo chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
+sudo chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-enabled/
+
+
 
 sudo ln -sf /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APPLICATION
+sudo rm /etc/nginx/sites-enabled/default
 sudo service nginx restart
 
 

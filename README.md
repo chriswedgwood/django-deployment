@@ -6,4 +6,10 @@
 6) ./digitalocean/setup_postgres.sh
 7) ./digitalocean/deploy_production.sh
 
+
+systemctl status nginx.service
+journalctl -xe
+cat /var/log/nginx/access.log
+cat  /var/log/nginx/error.log
+cat 
  

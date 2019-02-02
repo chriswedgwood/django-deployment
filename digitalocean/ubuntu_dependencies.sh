@@ -54,7 +54,13 @@ sudo apt-get install postgresql-server-dev-9.5
 sudo apt-get install python-psycopg2
 
 sudo apt-get install nodejs
-sudo apt-get install npm
+sudo apt-get install npm nodejs-legacy
+
+
+sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+sudo /sbin/mkswap /var/swap.1
+sudo /sbin/swapon /var/swap.1
+
 
 
 
