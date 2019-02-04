@@ -8,10 +8,18 @@
 
 
 systemctl status nginx.service
-journalctl -xe
+sudo journalctl -xe
 cat /var/log/nginx/access.log
 cat  /var/log/nginx/error.log
 cat /home/<application>/logs/nginx-access.log;
 cat /home/<application>/logs/nginx-error.log;
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl status <application>
+sudo supervidorctl restart <application>
+
+sudo service nginx restart
+
+
  
  

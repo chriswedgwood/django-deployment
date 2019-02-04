@@ -18,8 +18,8 @@ sudo apt-get install -y emacs
 echo -e "${CYAN}####INSTALLING PYTHON ####${NC}"
 
 #Python
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt-get update
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+sudo apt-get update -y
 sudo apt-get install -y python3.6
 sudo apt-get install -y python3.6-dev
 sudo apt-get install -y unixodbc-dev
@@ -50,11 +50,11 @@ sudo -H pip3.6 install virtualenv
 
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
 sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev python3.6 python3.6-venv python3.6-dev
-sudo apt-get install postgresql-server-dev-9.5
-sudo apt-get install python-psycopg2
+sudo apt-get install -y postgresql-server-dev-9.5
+sudo apt-get install -y python-psycopg2
 
-sudo apt-get install nodejs
-sudo apt-get install npm nodejs-legacy
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm nodejs-legacy
 
 
 sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
