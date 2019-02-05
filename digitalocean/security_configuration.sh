@@ -6,6 +6,8 @@ read -p "Application User:" APPLICATION
 read -p "Droplet IP Address:" IPADDRESS
 read -p "Site Domain(no www):" DOMAIN
 read -p "Mailgun Domain:" MAILGUN_DOMAIN
+read -p "Sentry DSN:" SENTRY_DSN
+
 
 read -p "Database Name:" DB_NAME
 read -p "Database user:" DB_USER
@@ -34,6 +36,8 @@ chown -R $APPLICATION:$APPLICATION /digitalocean/
 SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]))')
 
 
+
+
 echo "export DJANGO_SETTINGS_MODULE='config.settings.production'
 export DJANGO_SECRET_KEY='$SECRET_KEY'
 export DJANGO_ALLOWED_HOSTS='$IPADDRESS'
@@ -43,7 +47,7 @@ export MAILGUN_DOMAIN='$MAILGUN_DOMAIN'
 export DJANGO_AWS_ACCESS_KEY_ID=''
 export DJANGO_AWS_SECRET_ACCESS_KEY=''
 export DJANGO_AWS_STORAGE_BUCKET_NAME=''
-export DJANGO_SENTRY_DSN=''
+export DJANGO_SENTRY_DSN='$SENTRY_DSN'
 export DJANGO_SENTRY_LOG_LEVEL='Debug'
 export DJANGO_DEBUG=False
 export IP_ADDRESS='$IPADDRESS'
@@ -52,6 +56,8 @@ export DB_NAME='$DB_NAME'
 export DB_USER='$DB_USER'
 export DB_PASSWORD='$DB_PASSWORD'
 export SITE_DOMAIN='$DOMAIN' 
+export DJANGO_SECURE_SSL_REDIRECT='True'
+export DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS='True' 
 export DATABASE_URL='postgres://$DB_USER:$DB_PASSWORD@localhost:5432/$DB_NAME'" > /home/$APPLICATION/.env
 
 source  /home/$APPLICATION/.env
