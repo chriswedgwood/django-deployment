@@ -12,6 +12,10 @@ sudo ufw delete allow 'Nginx HTTP'
 sudo ufw allow 'OpenSSH'
 sudo ufw status
 
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
 sudo add-apt-repository ppa:certbot/certbot
-
-sudo certbot --nginx -d peoplevsparkingtickets.co.uk -d www.peoplevsparkingtickets.co.uk
+sudo apt-get update
+sudo apt-get install certbot python-certbot-nginx 
+sudo certbot --nginx -d golfcapture.co.uk -d www.golfcapture.co.uk

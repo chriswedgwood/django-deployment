@@ -33,14 +33,14 @@ chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
 chown -R $APPLICATION:$APPLICATION /digitalocean/
 
 
-SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)") for i in range(50)]))')
+SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*") for i in range(50)]))')
 
 
 
 
 echo "export DJANGO_SETTINGS_MODULE='config.settings.production'
 export DJANGO_SECRET_KEY='$SECRET_KEY'
-export DJANGO_ALLOWED_HOSTS='$IPADDRESS'
+export DJANGO_ALLOWED_HOSTS='$IPADDRESS','$DOMAIN','www.$DOMAIN'
 export DJANGO_ADMIN_URL='padmin'
 export MAILGUN_API_KEY='key-e127c2a80065055cc6c99a7eaa636b88'
 export MAILGUN_DOMAIN='$MAILGUN_DOMAIN'
