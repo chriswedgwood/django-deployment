@@ -7,17 +7,17 @@ NC='\033[0m' # No Color
 
 echo -e "${CYAN}####STARTING SETUP####${NC}"
 
-
-source ~/.env
+cd /home/deploy
+source ../.env
 USER=$(whoami)
 echo "USER NAME:"$USER
 echo "APPLICATION:"$APPLICATION
 
 TODAY=`date '+%Y%m%d%H%M%S'`;
 echo -e "${CYAN}####CREATING APPLICATION $APPLICATION$TODAY ####${NC}"
-mkdir ~/$APPLICATION$TODAY
+mkdir -p ~/$APPLICATION$TODAY
 cd ~/$APPLICATION$TODAY
-mkdir ~/logs
+mkdir -p ~/logs
 echo -e "${CYAN}####CLONING git@github.com:chriswedgwood/$APPLICATION.git ####${NC}"
 git clone git@github.com:chriswedgwood/$APPLICATION.git
 
@@ -50,7 +50,7 @@ python manage.py migrate --settings config.settings.production
 echo -e "${CYAN}####COLLECT STATIC FILES####${NC}"
 
 python manage.py collectstatic --noinput --settings config.settings.production
-#python manage.py createsuperuser
+
 
 echo -e "${CYAN}####SETUP GUNICORN####${NC}"
 
@@ -85,9 +85,10 @@ exec ../venv/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
 
 chmod u+x ../gunicorn_start
 echo -e "${CYAN}####SETUP LOG FOLDERS AND FILES####${NC}"
-mkdir ../run
-mkdir ../logs
-touch ../logs/gunicorn-error.log
+mkdir -p ../run
+mkdir -p ../logs
+> ../logs/gunicorn-error.log
+
 
 echo -e "${CYAN}####SETUP SUPERVISORD####${NC}"
 
@@ -149,7 +150,11 @@ sudo chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-enabled/
 
 
 sudo ln -sf /etc/nginx/sites-available/$APPLICATION /etc/nginx/sites-enabled/$APPLICATION
-sudo rm /etc/nginx/sites-enabled/default
+sudo rm -rf /etc/nginx/sites-enabled/default
+
+> ../logs/nginx-access.log
+> ../logs/nginx-error.log
+
 sudo service nginx restart
 
 
