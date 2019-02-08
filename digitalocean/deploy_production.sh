@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -o pipefail  # trace ERR through pipes
+set -o errexit   # same as set -e : exit the script if any statement returns a non-true return value
 
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
@@ -116,7 +118,7 @@ server {
 
     # add here the ip address of your server
     # or a domain pointing to that ip (like example.com or www.example.com)
-    server_name $IP_ADDRESS;
+    server_name $IP_ADDRESS $DOMAIN www.$DOMAIN;
 
     keepalive_timeout 5;
     client_max_body_size 4G;

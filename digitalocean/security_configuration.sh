@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # ssh -t username@host "$(cat example.sh)"
 
+set -o pipefail  # trace ERR through pipes
+set -o errexit   # same as set -e : exit the script if any statement returns a non-true return value
 
 read -p "Application User:" APPLICATION
 read -p "Droplet IP Address:" IPADDRESS
@@ -26,11 +28,11 @@ mkdir -p /home/$APPLICATION/.ssh
 touch /home/$APPLICATION/.ssh/authorized_keys
 
 cp /root/.ssh/authorized_keys /home/$APPLICATION/.ssh/authorized_keys
-cp -r /root/digitalocean/ /home/$APPLICATION/
+cp -r /root/deploy/ /home/$APPLICATION/
 chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/.ssh
 chown -R $APPLICATION:$APPLICATION /etc/supervisor/
 chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
-chown -R $APPLICATION:$APPLICATION /digitalocean/
+chown -R $APPLICATION:$APPLICATION /deploy/
 
 
 SECRET_KEY=$(python -c 'import random; print ("".join([random.choice("abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*") for i in range(50)]))')

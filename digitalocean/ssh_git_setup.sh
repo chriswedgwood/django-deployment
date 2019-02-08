@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -o pipefail  # trace ERR through pipes
+set -o errexit   # same as set -e : exit the script if any statement returns a non-true return value
 
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color

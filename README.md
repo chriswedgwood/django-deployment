@@ -1,4 +1,4 @@
-1) scp -r ./digitalocean root@<ipaddress>:/root
+1) scp -r ./digitalocean/. root@<ipaddress>:/root/deploy
 2) ssh root@<ipaddress>
 3) ./digitalocean/ubuntu_dependencies.sh
 4) ./digitalocean/security_configuration.sh
