@@ -7,8 +7,9 @@ NC='\033[0m' # No Color
 
 echo -e "${CYAN}####STARTING SETUP####${NC}"
 
-cd /home/deploy
-source ../.env
+cd 
+source .env
+
 USER=$(whoami)
 echo "USER NAME:"$USER
 echo "APPLICATION:"$APPLICATION
@@ -40,7 +41,9 @@ cd $APPLICATION/frontend
 
 npm install --production
 
+echo -e "${CYAN}####RUN DJANGO CHECK####${NC}"
 
+python manage.py check
 cd /home/$APPLICATION/$APPLICATION$TODAY/$APPLICATION/
 pwd
 echo -e "${CYAN}####RUN MIGRATIONS####${NC}"
@@ -80,6 +83,7 @@ exec ../venv/bin/gunicorn \${DJANGO_WSGI_MODULE}:application \
   --group=\$GROUP \\
   --bind=\$BIND \\
   --log-level=\$LOG_LEVEL \\
+  --timeout=300 \\
   --log-file=-"  > /home/$APPLICATION/$APPLICATION$TODAY/gunicorn_start
 
 
@@ -119,14 +123,18 @@ server {
 
     # add here the ip address of your server
     # or a domain pointing to that ip (like example.com or www.example.com)
-    server_name $IP_ADDRESS $DOMAIN www.$DOMAIN;
+    server_name $IP_ADDRESS;
 
     keepalive_timeout 5;
     client_max_body_size 4G;
 
     access_log /home/$APPLICATION/logs/nginx-access.log;
-    error_log /home/$APPLICATION/logs/nginx-error.log;
+    error_log /home/$APPLICATION/logs/nginx-error.log debug;
 
+    events {
+        debug_connection $IP_ADDRESS;
+    }
+    location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         alias /home/$APPLICATION/$APPLICATION$TODAY/$APPLICATION/staticfiles/;
     }

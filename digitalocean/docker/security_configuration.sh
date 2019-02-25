@@ -38,7 +38,6 @@ cp /root/.ssh/authorized_keys /home/$APPLICATION/.ssh/authorized_keys
 cp -r /root/deploy/ /home/$APPLICATION/
 chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/.ssh
 chown -R $APPLICATION:$APPLICATION /etc/supervisor/
-chown -R $APPLICATION:$APPLICATION /etc/nginx/sites-available/
 chown -R $APPLICATION:$APPLICATION /home/$APPLICATION/deploy/
 
 
