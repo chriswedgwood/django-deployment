@@ -1,0 +1,25 @@
+today I deployed with fabric and ansible
+I have to learn permissions between deployer and root
+Issue 1)
+The nginx default page would not go away
+To fix this you need to remove the default website in /etc/nginx/sites-enabled and /etc/nginx/sites-available
+
+These help
+systemctl status nginx.service
+sudo tail -F /var/log/nginx/aalondon-error.log 
+systemctl start nginx.service
+systemctl start nginx.service
+nginx -t should produce
+
+"
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+"
+
+after that I had problems with gunicorn
+
+permissions and path
+
+to diagnose run gunicorn_start manually in the venv to output the error
+
+
