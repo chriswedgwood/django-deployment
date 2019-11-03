@@ -29,4 +29,9 @@ Run: sudo tail -F /var/log/nginx/aalondon-error.log
 Gets
 /home/deployer/aalondon/run/gunicorn.sock failed (2: No such file or directory)
 
-Why is there no gunicorn.sock
+Why is there no gunicorn.sock?
+
+The issue is permissions. 
+
+I need to work out what ansible is doing when it deployes
+Some folders are owned by root and some by deployer??
