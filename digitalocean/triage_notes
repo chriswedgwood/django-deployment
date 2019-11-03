@@ -23,3 +23,10 @@ permissions and path
 to diagnose run gunicorn_start manually in the venv to output the error
 
 
+##############################
+Error 502 Bad Gateway in nginx
+Run: sudo tail -F /var/log/nginx/aalondon-error.log 
+Gets
+/home/deployer/aalondon/run/gunicorn.sock failed (2: No such file or directory)
+
+Why is there no gunicorn.sock
